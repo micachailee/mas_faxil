@@ -1,16 +1,8 @@
 class MeasureModel{
-  late String name;
+  String? name;
   double? measure;
-
-  static List<String> list1 = [
-    "Hombros",
-    "Brazos",
-    "Torso",
-    "Piernas",
-  ];
-  static List<String> list2 =[
-    "Laterales",
-    "Respaldar",
-    "Asiento",
-  ];
+  MeasureModel(String _name, double _measure){
+    name= _name;
+    measure = _measure;
+  }
   }

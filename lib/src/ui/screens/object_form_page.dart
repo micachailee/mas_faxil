@@ -3,6 +3,7 @@ import 'package:mas_faxil/src/ui/screens/result_page.dart';
 import 'package:mas_faxil/src/ui/screens_controllers/object_form_page_controller.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 
+import '../../models/measure_model.dart';
 import 'object_selection_page.dart';
 
 class ObjectFormPage extends StatelessWidget{
@@ -50,16 +51,16 @@ Widget build (BuildContext context){
     height: 80,
     decoration:const BoxDecoration(
         image: DecorationImage(
-            image: AssetImage('images/third_step.png'),
+            image: AssetImage('lib/src/images/third_step.png'),
             fit: BoxFit.fill)
     ),
   ),
       Expanded(
         child: ListView.builder(
             itemBuilder: (BuildContext context, int index){
-              return _measure(_con.current[index]);
+              return _measure(_con.GetList()[index]);
             },
-          itemCount:_con.current.length ,
+          itemCount:_con.GetList().length ,
         ),
       ),
       SizedBox(
@@ -94,12 +95,12 @@ Widget build (BuildContext context){
     ],
   );
 }
-_measure(String _type){
+_measure(MeasureModel measure){
   return TextFormField(
     decoration: InputDecoration(
       icon:  const Icon(Icons.calculate_outlined),
       hintText: 'Ingrese la medida en cm',
-      labelText: _type,
+      labelText: measure.name,
     ),
     validator: (String? value){
     return(value!=null)? 'Ingrese nuevamente':null;

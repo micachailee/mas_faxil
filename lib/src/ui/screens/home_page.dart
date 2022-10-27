@@ -4,16 +4,17 @@ import 'package:mas_faxil/src/ui/screens_controllers/home_page_controller.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 
 import 'category_selection_page.dart';
+import 'history_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
 
   @override
-  _HomePageState createState() => _HomePageState();
+  HomePageState createState() => HomePageState();
 }
 
-class _HomePageState extends StateMVC {
+class HomePageState extends StateMVC {
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -32,7 +33,7 @@ class _HomePageState extends StateMVC {
                     height: 200,
                     decoration: const BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage('images/scissors.png'),
+                        image: AssetImage('lib/src/images/scissors.png'),
                       ),
                     ),
                 ),
@@ -73,10 +74,7 @@ class _HomePageState extends StateMVC {
                         child: Center(
                           child: ElevatedButton(
                             onPressed: (){
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(builder: (context)=> const ResultPage())
-                              );
+                              print('Proximamente');
                             },
                             style: ButtonStyle(
                                 minimumSize: MaterialStateProperty.all(const Size(300,50)),

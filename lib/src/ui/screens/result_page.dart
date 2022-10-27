@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-
+import 'package:mvc_pattern/mvc_pattern.dart';
+import '../../models/object_model.dart';
+import '../screens_controllers/result_page_controller.dart';
 import 'home_page.dart';
 
 class ResultPage extends StatefulWidget {
@@ -7,11 +9,14 @@ class ResultPage extends StatefulWidget {
 
 
   @override
-  State<ResultPage> createState() => _ResultPageState();
+  ResultPageState createState() => ResultPageState();
 }
 
-class _ResultPageState extends State<ResultPage> {
-
+class ResultPageState extends StateMVC {
+  late ResultPageController _con;
+  ResultPageState() : super(ResultPageController()){
+    _con = ResultPageController();
+  }
 @override
   Widget build(BuildContext context) {
     return Stack(
@@ -30,7 +35,7 @@ class _ResultPageState extends State<ResultPage> {
             height: 200,
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('images/scissors.png'),
+                image: AssetImage('lib/src/images/scissors.png'),
               ),
             ),
           ),
@@ -91,20 +96,20 @@ _results(){
       fontSize: 30.0),
       ),
       _title('A partir de los datos que brindaste, tienes:'),
-      _myresults('sastreria','remera','algodon','100','120'),
+      _myresults(_con.object),
     ],
   );
 }
-_myresults( String category, String object, String fabric, String width, String height){
+_myresults(ObjectModel? object){
   return Column(
     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
   children: [
     _title('Tipo de prenda: '),
-    _data(object),
+    _data('${object?.name}'),
     _title('Tipo de tela: '),
-    _data(fabric),
+    _data('${object?.fabric}'),
     _title('Medidas necesarias'),
-     Text(('$width cm X $height cm '),
+     Text(('${_con.result?.forSkirt()} cm2 '),
       style: const TextStyle(color: Colors.white,
           letterSpacing: 2.0,
           fontWeight: FontWeight.bold,

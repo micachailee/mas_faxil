@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mas_faxil/src/ui/screens_controllers/category_selection_page_controller.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
-
 import 'home_page.dart';
 import 'object_selection_page.dart';
 
@@ -23,8 +22,6 @@ class CategorySelectionPageState extends StateMVC{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
         title: const Text('Seleccione una categoria'),
         leading: IconButton(
           onPressed:(){
@@ -40,7 +37,7 @@ class CategorySelectionPageState extends StateMVC{
             height: 80,
             decoration:const BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage('images/first_step.png'),
+                    image: AssetImage('lib/src/images/first_step.png'),
                     fit: BoxFit.fill)
             ),
           ),
@@ -49,8 +46,8 @@ class CategorySelectionPageState extends StateMVC{
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  _decoration('images/scissors.png',_con.text1), //-------------USO LA PROPIEDAD
-                  _decoration('images/scissors.png',_con.text2),
+                  _decoration('lib/src/images/scissors.png',_con.text1), //-------------USO LA PROPIEDAD
+                  _decoration('lib/src/images/scissors.png',_con.text2),
                 ],
               )
           ),
@@ -107,7 +104,6 @@ class CategorySelectionPageState extends StateMVC{
               ),
               onPressed: (){
                 setState(() {
-                  _con.change();
                 });
               },
               child:Row(
